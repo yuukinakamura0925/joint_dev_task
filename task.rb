@@ -68,7 +68,7 @@ def q8
 
   # 以下に回答を記載
   upper_case_programming_languages = programming_languages.map(&:upcase)
-  programming_languages = programming_languages.map(&:capitalize)
+  programming_languages.map!(&:capitalize)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -100,8 +100,8 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sports = sports.flatten
-  sports.uniq!
+  sports.flatten!
+  sports.uniq! #重複した要素を取り除く
   sports.each.with_index do |sport,i|
     puts "No.#{i} #{sport}"
   end  
@@ -120,7 +120,9 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-  puts user_data.merge(update_data)
+  user_data = user_data.merge(update_data)
+  p user_data
+
 
 end
 
@@ -137,17 +139,10 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.include?(:age)
-    puts "OK"
-  else 
-    puts "NG"  
-  end
 
-  if data2.include?(:age)
-    puts "OK"
-  else 
-    puts "NG"  
-  end
+  data1.include?(:age) ? "OK": "NG"
+  data2.include?(:age) ? "OK": "NG"
+  
 
 end
 
@@ -161,7 +156,7 @@ def q16
 
   # 以下に回答を記載
   users.each do |user|
-    puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}歳です"
+    puts "私の名前は#{user[:name]}です。年齢は#{user}歳です"
   end
   
 
